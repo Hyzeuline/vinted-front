@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
+  const offerId = "2345678";
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -37,15 +39,24 @@ const Home = () => {
         // _id:"687fcb614771536e533988c8"
 
         // console.log(element);
-        console.log(element.product_pictures);
+
         return (
-          <div key={index}>
+          <div
+            key={index}
+            onClick={() => {
+              <Link to="/Offer"></Link>;
+            }}
+          >
             <div className="owner">{element.owner.account.username}</div>
-            {/* {{element.owner.account.avatar} ? (<div className="owner-avatar">{element.owner.account.avatar}</div>)} */}
+            {element.owner.account.avatar && (
+              <div className="owner-avatar">
+                <img src={element.owner.account.avatar.secure_url} />
+              </div>
+            )}
             <div className="image-article">
-              <img src={element.product_pictures[url]} />
+              <img src={element.product_pictures[0].secure_url} />
             </div>
-            <div className="price-article">{element.product_price}</div>
+            <div className="price-article">{element.product_price} €</div>
           </div>
         );
       })}
