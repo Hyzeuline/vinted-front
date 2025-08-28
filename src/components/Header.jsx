@@ -1,7 +1,9 @@
 import logo from "../assets/logo-vinted.png";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Header = () => {
+  const existToken = Cookies.get("token");
   return (
     <header>
       <div className="container">
@@ -12,10 +14,14 @@ const Header = () => {
         <div className="header-button">
           <div className="inscription-connexion">
             <Link to="/signup">
-              <button>S'inscrire</button>
+              {existToken ? <div></div> : <button>S'inscrire</button>}
             </Link>
             <Link to="/login">
-              <button>Se connecter</button>
+              {existToken ? (
+                <button>Se déconnecter</button>
+              ) : (
+                <button>Se connecter</button>
+              )}
             </Link>
           </div>
           <div className="publish-article">
