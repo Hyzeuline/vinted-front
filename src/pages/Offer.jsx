@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 const Offer = () => {
-  const params = useParams();
+  const { id } = useParams();
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -11,14 +11,14 @@ const Offer = () => {
     // appel à l'API pour récupérer les données via axios
     const fetchData = async () => {
       const response = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offer/${params.id}`
+        `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
       );
       setData(response.data);
       setIsLoading(false);
     };
 
     fetchData();
-  }, []);
+  }, [id]);
 
   return isLoading ? (
     <p>Chargement ...</p>
