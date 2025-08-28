@@ -3,14 +3,15 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const SignUp = () => {
-  const [name, setName] = useState(Cookies.get("userName") || "");
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [checked, setChecked] = useState(false);
+  const [newsletter, setNewsletter] = useState(false);
+  const [data, setData] = useState(null);
 
   const handleNameChange = event => {
     const value = event.target.value;
-    setName(value);
+    setUserName(value);
   };
 
   const handleEmailChange = event => {
@@ -23,13 +24,28 @@ const SignUp = () => {
     setPassword(value);
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    console.log(email, password);
+  const handleNewsletter = event => {
+    const value = event.target.checked;
+    setNewsletter(value);
   };
 
-  const handleChecked = event => {
-    setChecked(event.target.checked);
+  const handleSubmit = async event => {
+    event.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        {
+          username,
+          email,
+          password,
+          newsletter,
+        }
+      );
+      setData(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.log(error.response);
+    }
   };
 
   return (
@@ -41,10 +57,9 @@ const SignUp = () => {
             placeholder="Nom d'utilisateur"
             type="text"
             name="name"
-            value={name}
+            value={username}
             onChange={handleNameChange}
           />
-
           <input
             placeholder="Email"
             type="text"
@@ -60,26 +75,22 @@ const SignUp = () => {
             onChange={handlePasswordChange}
           />
         </div>
-
         <div>
           <input
             type="checkbox"
             id="newsletter"
             name="newsletter"
-            checked={checked}
-            onChange={handleChecked}
+            checked={newsletter}
+            onChange={handleNewsletter}
           />
-          <label for="newsletter">S'inscrire à notre newsletter</label>
+          <label htmlFor="newsletter">S'inscrire à notre newsletter</label>
         </div>
         <p>
           En m'inscrivant je confirme avoir lu et accepté les Termes &
           Conditions et Politique de Confidentialité de Vinted. Je confirme
           avoir au moins 18 ans.
         </p>
-        <button onclick={() => {}}>S'inscrire</button>
-        {Cookies.get("userName") !== "" && (
-          <p>Ce nom d'utilisateur est déjà utilisé</p>
-        )}
+        <button>S'inscrire</button>
         <Link to="/login">
           <p>Tu as déjà un compte ? Connecte-toi !</p>
         </Link>
