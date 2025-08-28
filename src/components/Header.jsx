@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Header = () => {
-  const existToken = Cookies.get("token");
+  Cookies.get("token");
   return (
     <header>
       <div className="container">
@@ -12,18 +12,24 @@ const Header = () => {
         </Link>{" "}
         <input placeholder="Recherche des articles" type="text" />
         <div className="header-button">
-          <div className="inscription-connexion">
-            <Link to="/signup">
-              {existToken ? <div></div> : <button>S'inscrire</button>}
-            </Link>
-            <Link to="/login">
-              {existToken ? (
-                <button>Se déconnecter</button>
-              ) : (
+          {Cookies.get("token") ? (
+            <button
+              onClick={() => {
+                Cookies.remove("token");
+              }}
+            >
+              Déconnexion
+            </button>
+          ) : (
+            <div className="inscription-connexion">
+              <Link to="/signup">
+                <button>S'inscrire</button>
+              </Link>
+              <Link to="/login">
                 <button>Se connecter</button>
-              )}
-            </Link>
-          </div>
+              </Link>
+            </div>
+          )}
           <div className="publish-article">
             <button>Vends tes articles</button>
           </div>
