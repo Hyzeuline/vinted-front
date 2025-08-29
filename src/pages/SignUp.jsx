@@ -4,7 +4,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
-const SignUp = () => {
+const SignUp = ({ setLog }) => {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -43,20 +43,20 @@ const SignUp = () => {
           newsletter,
         }
       );
+      console.log(response.data);
 
       //création de chaque cookie pour chaque value
-      const token = response.data.token;
-      console.log(token);
-      const username = response.data.account.username;
-      Cookies.set("token", token, { expire: 14 });
-      Cookies.set("username", username, { expire: 14 });
+      Cookies.set("token", response.data.token, { expires: 14 });
+      Cookies.set("username", response.data.account.username, { expires: 14 });
+      setLog(Cookies.get("token"));
+      navigate("/");
     } catch (error) {
-      console.log(error.response);
+      console.log(error);
     }
   };
 
   return (
-    <div className="formulaire">
+    <div className="formulaire-signup">
       <h1>S'inscrire</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -97,7 +97,7 @@ const SignUp = () => {
           Conditions et Politique de Confidentialité de Vinted. Je confirme
           avoir au moins 18 ans.
         </p>
-        <button onClick={() => navigate("/")}>S'inscrire</button>
+        <button>S'inscrire</button>
         <Link to="/login">
           <p>Tu as déjà un compte ? Connecte-toi !</p>
         </Link>

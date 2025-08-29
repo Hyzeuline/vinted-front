@@ -6,16 +6,19 @@ import Offer from "./pages/Offer";
 import NoMatch from "./pages/NoMatch";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import { useState } from "react";
 
 function App() {
+  const [log, setLog] = useState(null);
+
   return (
     <Router>
-      <Header />
+      <Header log={log} setLog={setLog} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="*" element={<NoMatch />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signup" element={<SignUp log={log} setLog={setLog} />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>

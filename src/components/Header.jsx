@@ -2,20 +2,20 @@ import logo from "../assets/logo-vinted.png";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Header = () => {
-  Cookies.get("token");
+const Header = ({ setLog }) => {
+  let token = Cookies.get("token");
   return (
     <header>
       <div className="container">
         <Link to="/">
           <img src={logo} alt="logo-vinted" />
         </Link>{" "}
-        <input placeholder="Recherche des articles" type="text" />
+        <input placeholder="Rechercher des articles" type="text" />
         <div className="header-button">
-          {Cookies.get("token") ? (
+          {token ? (
             <button
               onClick={() => {
-                Cookies.remove("token");
+                setLog(Cookies.remove("token"));
               }}
             >
               Déconnexion

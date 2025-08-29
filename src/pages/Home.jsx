@@ -27,8 +27,6 @@ const Home = () => {
   ) : (
     <main>
       {data.offers.map((element, index) => {
-        console.log(element._id);
-
         return (
           <article key={index}>
             <div className="owner">
