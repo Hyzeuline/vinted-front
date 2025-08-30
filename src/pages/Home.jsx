@@ -10,8 +10,9 @@ const Home = ({ filter }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers?title=robe"
+          `${import.meta.env.VITE_API_URL}/offers`
         );
+        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -26,7 +27,7 @@ const Home = ({ filter }) => {
     <p>Chargement ...</p>
   ) : (
     <main>
-      {data.offers.map((element, index) => {
+      {/* {data.offers.map((element, index) => {
         return (
           <article key={index}>
             <div className="owner">
@@ -54,7 +55,7 @@ const Home = ({ filter }) => {
             )}
           </article>
         );
-      })}
+      })} */}
     </main>
   );
 };
