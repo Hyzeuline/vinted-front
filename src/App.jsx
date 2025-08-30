@@ -13,17 +13,6 @@ function App() {
   const [log, setLog] = useState(null);
   const [filter, setFilter] = useState(null);
 
-  useEffect(() => {
-    api
-      .get("/")
-      .then(response => {
-        console.log("✅ Backend connecté:", response.data);
-      })
-      .catch(error => {
-        console.log("❌ Erreur:", error);
-      });
-  }, []);
-
   return (
     <Router>
       <Header log={log} setLog={setLog} />

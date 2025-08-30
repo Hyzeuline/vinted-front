@@ -34,9 +34,9 @@ const SignUp = ({ setLog }) => {
   const handleSubmit = async event => {
     event.preventDefault(); // ça permet à la page de ne pas être rafraîchit
     try {
-      //il faut récupérer les données des satates pour les envoyées au serveur
+      //il faut récupérer les données des states pour les envoyées au serveur
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        "https://site--vinted-backend--zvc5szvjvznr.code.run/user/signup",
         {
           username,
           email,
