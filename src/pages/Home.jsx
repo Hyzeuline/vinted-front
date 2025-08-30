@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Home = () => {
+const Home = ({ filter }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -10,7 +10,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
+          "https://lereacteur-vinted-api.herokuapp.com/offers?title=robe"
         );
         setData(response.data);
         setIsLoading(false);
@@ -20,7 +20,7 @@ const Home = () => {
     };
 
     fetchData();
-  }, []);
+  }, [filter]);
 
   return isLoading ? (
     <p>Chargement ...</p>

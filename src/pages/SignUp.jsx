@@ -32,8 +32,9 @@ const SignUp = ({ setLog }) => {
   };
 
   const handleSubmit = async event => {
-    event.preventDefault();
+    event.preventDefault(); // ça permet à la page de ne pas être rafraîchit
     try {
+      //il faut récupérer les données des satates pour les envoyées au serveur
       const response = await axios.post(
         "https://lereacteur-vinted-api.herokuapp.com/user/signup",
         {
@@ -48,7 +49,9 @@ const SignUp = ({ setLog }) => {
       //création de chaque cookie pour chaque value
       Cookies.set("token", response.data.token, { expires: 14 });
       Cookies.set("username", response.data.account.username, { expires: 14 });
+      //récupération du cookies et mise à jour de la valeur log
       setLog(Cookies.get("token"));
+      //rediriger nos utilisateurs vers home
       navigate("/");
     } catch (error) {
       console.log(error);

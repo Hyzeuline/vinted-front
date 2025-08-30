@@ -6,10 +6,23 @@ import Offer from "./pages/Offer";
 import NoMatch from "./pages/NoMatch";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import api from "./services/api";
 
 function App() {
   const [log, setLog] = useState(null);
+  const [filter, setFilter] = useState(null);
+
+  useEffect(() => {
+    api
+      .get("/")
+      .then(response => {
+        console.log("✅ Backend connecté:", response.data);
+      })
+      .catch(error => {
+        console.log("❌ Erreur:", error);
+      });
+  }, []);
 
   return (
     <Router>
