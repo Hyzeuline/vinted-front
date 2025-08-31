@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Home = ({ filter }) => {
+const Home = ({ search }) => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -11,8 +11,8 @@ const Home = ({ filter }) => {
       try {
         let url = `${import.meta.env.VITE_API_URL}offers`;
 
-        if (filter) {
-          url += `?title=${encodeURIComponent(filter)}`;
+        if (search) {
+          url += `?title=${encodeURIComponent(search)}`;
         }
 
         const response = await axios.get(url);
