@@ -10,7 +10,7 @@ const Home = ({ filter }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/offers`
+          `${import.meta.env.VITE_API_URL}offers`
         );
         console.log(response.data);
         setData(response.data);
