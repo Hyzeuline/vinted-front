@@ -15,9 +15,6 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.radio {
-  display: flex;
-}
 /* ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------
@@ -26,7 +23,7 @@
 ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------ */
 
-header .container {
+/* header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -80,7 +77,123 @@ input {
   color: #fff;
   background-color: #2cb1ba;
   cursor: pointer;
+} */
+
+header {
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px 20px;
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
+
+header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo */
+header img {
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Zone de filtres */
+.filters {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Input recherche */
+.filters input[type="search"] {
+  width: 280px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  font-size: 14px;
+}
+
+.filters input[type="search"]:focus {
+  border-color: #09b1ba;
+  box-shadow: 0 0 0 2px rgba(9, 177, 186, 0.2);
+}
+
+/* Filtres prix */
+.filter-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.radio span {
+  font-weight: 500;
+}
+
+.radio label {
+  margin-right: 6px;
+}
+
+/* Boutons header */
+.header-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Boutons inscription/connexion */
+.inscription-connexion {
+  display: flex;
+  gap: 10px;
+}
+
+.header-button button {
+  border: 1px solid #09b1ba;
+  background-color: #fff;
+  color: #09b1ba;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.header-button button:hover {
+  background-color: #09b1ba;
+  color: #fff;
+}
+
+/* Bouton "Vends tes articles" */
+.publish-article button {
+  background-color: #09b1ba;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.publish-article button:hover {
+  background-color: #078f94;
+}
+
 /* ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------
