@@ -13,6 +13,7 @@ const Offer = () => {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}offers/${id}`
       );
+      console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     };
