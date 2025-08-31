@@ -9,8 +9,6 @@ const Header = ({ setLog, setSearch, search }) => {
     const value = event.target.value;
     setSearch(value);
   };
-  // const handleCheckboxChange = {};
-  // const handleRangeChange = {};
 
   return (
     <header>
@@ -29,39 +27,38 @@ const Header = ({ setLog, setSearch, search }) => {
               onChange={handleSearchChange}
             />
           </div>
-          {/* <div className="filter-price">
+          <div className="filter-price">
             <div className="checkbox">
               <span>Trier par prix : </span>
               <label>Croissant</label>
               <input
-                type="checkbox"
-                id="price-asc"
-                name="price-asc"
-                value={filter}
-                onChange={handleCheckboxChange}
+                type="radio"
+                name="price-sort"
+                value="asc"
+                checked={priceSort === "asc"}
+                onChange={() => setPriceSort("asc")}
               />
               <label>Décroissant</label>
               <input
-                type="checkbox"
-                id="price-desc"
-                name="price-desc"
-                value={filter}
-                onChange={handleCheckboxChange}
+                type="radio"
+                name="price-sort"
+                value="desc"
+                checked={priceSort === "desc"}
+                onChange={() => setPriceSort("desc")}
               />
             </div>
-            <div className="range">
-              <input
-                type="range"
-                id="price"
-                name="price"
-                min="0"
-                max="500"
-                step="5"
-                value={filter}
-                onChange={handleRangeChange}
-              />
-            </div>
-          </div> */}
+            <Slider
+              range
+              min={0}
+              max={500}
+              step={5}
+              value={priceRange}
+              onChange={range => setPriceRange(range)}
+            />
+            <p>
+              Prix min : {priceRange[0]}€ - Prix max : {priceRange[1]}€
+            </p>
+          </div>
         </div>
         <div className="header-button">
           {token ? (
