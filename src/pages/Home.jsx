@@ -27,7 +27,7 @@ const Home = ({ filter }) => {
     <p>Chargement ...</p>
   ) : (
     <main>
-      {/* {data.offers.map((element, index) => {
+      {data.offers.map((element, index) => {
         return (
           <article key={index}>
             <div className="owner">
@@ -41,7 +41,7 @@ const Home = ({ filter }) => {
             <div className="image-article">
               <Link to={`/Offer/${element._id}`}>
                 <img
-                  src={element.product_pictures[0].secure_url}
+                  src={element.product_image.secure_url}
                   alt={element.product_name}
                 />
               </Link>
@@ -55,7 +55,7 @@ const Home = ({ filter }) => {
             )}
           </article>
         );
-      })} */}
+      })}
     </main>
   );
 };
