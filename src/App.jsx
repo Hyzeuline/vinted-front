@@ -7,7 +7,6 @@ import NoMatch from "./pages/NoMatch";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import { useState, useEffect } from "react";
-import api from "./services/api";
 
 function App() {
   const [log, setLog] = useState(null);
@@ -15,7 +14,7 @@ function App() {
 
   return (
     <Router>
-      <Header log={log} setLog={setLog} />
+      <Header log={log} setLog={setLog} filter={filter} setFilter={setFilter} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/offer/:id" element={<Offer />} />
