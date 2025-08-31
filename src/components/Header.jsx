@@ -38,24 +38,28 @@ const Header = ({
             />
           </div>
           <div className="filter-price">
-            <div className="checkbox">
+            <div className="radio">
               <span>Trier par prix : </span>
-              <label>Croissant</label>
-              <input
-                type="radio"
-                name="price-sort"
-                value="asc"
-                checked={priceSort === "asc"}
-                onChange={() => setPriceSort("asc")}
-              />
-              <label>Décroissant</label>
-              <input
-                type="radio"
-                name="price-sort"
-                value="desc"
-                checked={priceSort === "desc"}
-                onChange={() => setPriceSort("desc")}
-              />
+              <div>
+                <label>Croissant</label>
+                <input
+                  type="radio"
+                  name="price-sort"
+                  value="asc"
+                  checked={priceSort === "asc"}
+                  onChange={() => setPriceSort("asc")}
+                />
+              </div>
+              <div>
+                <label>Décroissant</label>
+                <input
+                  type="radio"
+                  name="price-sort"
+                  value="desc"
+                  checked={priceSort === "desc"}
+                  onChange={() => setPriceSort("desc")}
+                />
+              </div>
             </div>
             <Slider
               range
