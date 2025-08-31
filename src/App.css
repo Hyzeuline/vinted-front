@@ -124,7 +124,7 @@ header img {
 main {
   display: flex;
   flex-wrap: wrap;
-  margin: 40px 130px 40px 130px;
+  margin: 40px 130px 40px 85px;
   gap: 10px;
 }
 
