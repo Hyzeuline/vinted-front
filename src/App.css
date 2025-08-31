@@ -109,9 +109,8 @@ header img {
   gap: 12px;
 }
 
-.radio-details {
-  display: flex;
-  flex-direction: column;
+.slider {
+  margin-left: 40px;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------
