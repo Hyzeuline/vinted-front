@@ -10,9 +10,12 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .container {
   display: flex;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------
@@ -32,15 +35,7 @@
   padding: 10px 0;
 }
 
-header img {
-  width: 78px;
-  height: 35px;
-}
 
-.header-button {
-  display: flex;
-  gap: 70px;
-}
 
 input {
   width: 630px;
@@ -49,7 +44,15 @@ input {
   border-radius: 5px;
   cursor: pointer;
 }
-
+*/
+header img {
+  width: 78px;
+  height: 35px;
+}
+.header-button {
+  display: flex;
+  gap: 70px;
+}
 .inscription-connexion {
   display: flex;
   gap: 20px;
@@ -57,10 +60,10 @@ input {
 
 .inscription-connexion button {
   background-color: #fff;
-  color: #2cb1ba;
+  color: #017782;
   height: 30px;
   width: 115px;
-  border: 1px solid #2cb1ba;
+  border: 1px solid #017782;
   border-radius: 5px;
   font-size: 12px;
   outline: none;
@@ -70,14 +73,14 @@ input {
 .publish-article button {
   height: 30px;
   width: 115px;
-  border: 1px solid #2cb1ba;
+  border: 1px solid #017782;
   border-radius: 5px;
   font-size: 12px;
   outline: none;
   color: #fff;
-  background-color: #2cb1ba;
+  background-color: #017782;
   cursor: pointer;
-} */
+}
 
 header {
   border-bottom: 1px solid #e6e6e6;
@@ -107,7 +110,7 @@ header img {
 .filters {
   flex: 1;
   display: flex;
-  flex-direction: column; /* ✅ Met en colonne */
+  flex-direction: column;
   gap: 12px;
 }
 
@@ -116,17 +119,12 @@ header img {
   width: 100%;
   max-width: 400px;
   padding: 8px 12px;
-  border: 1px solid #ddd;
+  border: none;
   border-radius: 6px;
   outline: none;
   font-size: 14px;
   background-color: #edf2f2;
-  align-self: flex-start; /* garde aligné à gauche */
-}
-
-.filters input[type="search"]:focus {
-  border-color: #017782;
-  box-shadow: 0 0 0 2px rgba(9, 177, 186, 0.2);
+  align-self: flex-start;
 }
 
 /* Filtres prix */
@@ -135,13 +133,27 @@ header img {
   flex-direction: column;
   gap: 6px;
   font-size: 14px;
+  max-width: 200px;
+}
+.filter-price .ant-slider {
+  width: 100%; /* prend toute la largeur de filter-price */
+}
+/* Couleur active du slider */
+.filter-price .ant-slider-track {
+  background-color: #017782;
+}
+
+/* Poignée (le petit rond) */
+.filter-price .ant-slider-handle::after {
+  background-color: #017782;
+  border-color: #017782;
 }
 
 .radio {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex-wrap: wrap; /* pour éviter de casser si trop long */
+  flex-wrap: wrap;
 }
 
 .radio span {
@@ -150,51 +162,6 @@ header img {
 
 .radio label {
   margin-right: 6px;
-}
-
-/* Boutons header */
-.header-button {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* Boutons inscription/connexion */
-.inscription-connexion {
-  display: flex;
-  gap: 10px;
-}
-
-.header-button button {
-  border: 1px solid #017782;
-  background-color: #fff;
-  color: #017782;
-  padding: 8px 14px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.header-button button:hover {
-  background-color: #017782;
-  color: #fff;
-}
-
-/* Bouton "Vends tes articles" */
-.publish-article button {
-  background-color: #017782;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.publish-article button:hover {
-  background-color: #017782;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------
