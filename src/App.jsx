@@ -10,13 +10,13 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [log, setLog] = useState(null);
-  const [filter, setFilter] = useState(null);
+  const [filter, setFilter] = useState("");
 
   return (
     <Router>
       <Header log={log} setLog={setLog} filter={filter} setFilter={setFilter} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home filter={filter} />} />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="*" element={<NoMatch />} />
         <Route path="/signup" element={<SignUp log={log} setLog={setLog} />} />
