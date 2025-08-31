@@ -9,9 +9,13 @@ const Home = ({ filter }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}offers`
-        );
+        let url = `${import.meta.env.VITE_API_URL}offers`;
+
+        if (filter) {
+          url += `?title=${encodeURIComponent(filter)}`;
+        }
+
+        const response = await axios.get(url);
         console.log(response.data);
         setData(response.data);
         setIsLoading(false);

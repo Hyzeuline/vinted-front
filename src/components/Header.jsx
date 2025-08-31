@@ -1,7 +1,6 @@
 import logo from "../assets/img/logo-vinted.png";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
 
 const Header = ({ setLog, setFilter, filter }) => {
   let token = Cookies.get("token");
