@@ -92,6 +92,8 @@ header img {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 632px;
+  height: 100px;
 }
 
 /* Input recherche */
@@ -114,9 +116,6 @@ header img {
   gap: 6px;
   font-size: 14px;
   max-width: 200px;
-}
-.filter-price .ant-slider {
-  width: 100%; /* prend toute la largeur de filter-price */
 }
 
 .radio {
