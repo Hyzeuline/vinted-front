@@ -43,7 +43,7 @@ const Home = ({ filter }) => {
               <div className="owner-name">{element.owner.account.username}</div>
             </div>
             <div className="image-article">
-              <Link to={`/Offer/${element._id}`}>
+              <Link to={`/offer/${element._id}`}>
                 <img
                   src={element.product_image.secure_url}
                   alt={element.product_name}
