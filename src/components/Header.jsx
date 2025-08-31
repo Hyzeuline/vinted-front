@@ -2,7 +2,7 @@ import logo from "../assets/img/logo-vinted.png";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Header = ({ setLog, setSearch, search }) => {
+const Header = ({ setLog, setSearch, search, priceSort, setPriceSort }) => {
   let token = Cookies.get("token");
 
   const handleSearchChange = event => {
