@@ -9,8 +9,8 @@ const Header = ({ setLog, setSearch, search }) => {
     const value = event.target.value;
     setSearch(value);
   };
-  const handleCheckboxChange = {};
-  const handleRangeChange = {};
+  // const handleCheckboxChange = {};
+  // const handleRangeChange = {};
 
   return (
     <header>

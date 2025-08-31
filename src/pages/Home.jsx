@@ -25,7 +25,7 @@ const Home = ({ search }) => {
     };
 
     fetchData();
-  }, [filter]);
+  }, [search]);
 
   return isLoading ? (
     <p>Chargement ...</p>
