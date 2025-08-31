@@ -39,7 +39,7 @@ const Header = ({
           </div>
           <div className="filter-price">
             <div className="radio">
-              <p>Trier par prix : </p>
+              <span>Trier par prix : </span>
               <div>
                 <span>Croissant</span>
                 <input
