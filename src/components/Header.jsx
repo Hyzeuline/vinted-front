@@ -1,6 +1,8 @@
 import logo from "../assets/img/logo-vinted.png";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 
 const Header = ({ setLog, setSearch, search, priceSort, setPriceSort }) => {
   let token = Cookies.get("token");
