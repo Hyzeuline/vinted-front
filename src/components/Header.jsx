@@ -39,9 +39,9 @@ const Header = ({
           </div>
           <div className="filter-price">
             <div className="radio">
-              <span>Trier par prix : </span>
+              <p>Trier par prix : </p>
               <div>
-                <label>Croissant</label>
+                <span>Croissant</span>
                 <input
                   type="radio"
                   name="price-sort"
@@ -51,7 +51,7 @@ const Header = ({
                 />
               </div>
               <div>
-                <label>Décroissant</label>
+                <span>Décroissant</span>
                 <input
                   type="radio"
                   name="price-sort"

@@ -130,6 +130,7 @@ header img {
 /* Filtres prix */
 .filter-price {
   display: flex;
+  flex-direction: column;
   gap: 6px;
   font-size: 14px;
   max-width: 200px;
