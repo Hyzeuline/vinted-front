@@ -11,7 +11,7 @@ const Offer = () => {
     // appel à l'API pour récupérer les données via axios
     const fetchData = async () => {
       const response = await axios.get(
-        `https://site--vinted-backend--zvc5szvjvznr.code.run/offer/${id}`
+        `${import.meta.env.VITE_API_URL}offers/${id}`
       );
       setData(response.data);
       setIsLoading(false);
