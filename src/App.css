@@ -109,12 +109,9 @@ header img {
   gap: 12px;
 }
 
-.radio span {
-  font-weight: 500;
-}
-
-.radio label {
-  margin-right: 6px;
+.radio-details {
+  display: flex;
+  flex-direction: column;
 }
 
 /* ------------------------------------------------------------------------------------------------------------------

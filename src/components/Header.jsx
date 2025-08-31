@@ -40,7 +40,7 @@ const Header = ({
           <div className="filter-price">
             <div className="radio">
               <span>Trier par prix : </span>
-              <div>
+              <div className="radio-details">
                 <span>Croissant</span>
                 <input
                   type="radio"
@@ -50,7 +50,7 @@ const Header = ({
                   onChange={() => setPriceSort("asc")}
                 />
               </div>
-              <div>
+              <div className="radio-details">
                 <span>Décroissant</span>
                 <input
                   type="radio"
