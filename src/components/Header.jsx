@@ -61,17 +61,20 @@ const Header = ({
                 />
               </div>
             </div>
-            <Slider
-              range
-              min={0}
-              max={500}
-              step={5}
-              value={priceRange}
-              onChange={range => setPriceRange(range)}
-            />
-            <p>
-              Prix min : {priceRange[0]}€ - Prix max : {priceRange[1]}€
-            </p>
+            <div className="slider">
+              <Slider
+                range
+                min={0}
+                max={500}
+                step={5}
+                value={priceRange}
+                onChange={range => setPriceRange(range)}
+              />
+
+              <p>
+                Prix min : {priceRange[0]}€ - Prix max : {priceRange[1]}€
+              </p>
+            </div>
           </div>
         </div>
         <div className="header-button">
