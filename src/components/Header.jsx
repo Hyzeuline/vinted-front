@@ -4,7 +4,15 @@ import Cookies from "js-cookie";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
-const Header = ({ setLog, setSearch, search, priceSort, setPriceSort }) => {
+const Header = ({
+  setLog,
+  setSearch,
+  search,
+  priceSort,
+  setPriceSort,
+  priceRange,
+  setPriceRange,
+}) => {
   let token = Cookies.get("token");
 
   const handleSearchChange = event => {
