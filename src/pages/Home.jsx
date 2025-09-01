@@ -9,7 +9,10 @@ const Home = ({ search, priceSort, priceRange }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let url = `${import.meta.env.VITE_API_URL}offers`;
+        let url = import.meta.env.VITE_API_URL
+          ? `${import.meta.env.VITE_API_URL}offers`
+          : "https://site--vinted-backend--zvc5szvjvznr.code.run/offers";
+        // let url = `${import.meta.env.VITE_API_URL}offers`;
         const params = [];
 
         if (search) {
