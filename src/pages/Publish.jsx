@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const Publish = props => {
   const [file, setFile] = useState({});
@@ -14,6 +14,7 @@ const Publish = props => {
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
   const [exchange, setExchange] = useState(false);
+
   const userToken = Cookies.get("token");
 
   const handleFile = event => {
@@ -56,7 +57,7 @@ const Publish = props => {
     setExchange(event.target.checked);
   };
 
-  return (
+  return userToken ? (
     <section>
       <div className="container-publish">
         <h1>Vends ton article</h1>
@@ -95,18 +96,11 @@ const Publish = props => {
                 ? `${import.meta.env.VITE_API_URL}offer/publish`
                 : "https://site--vinted-backend--zvc5szvjvznr.code.run/offer/publish";
 
-              const headers = {
-                "Content-Type": "multipart/form-data",
-              };
-              if (userToken) {
-                headers.Authorization = "Bearer " + userToken;
-              } else {
-                useNavigate("/signup");
-                return;
-              }
-
               const response = await axios.post(url, formData, {
-                headers,
+                headers: {
+                  Authorization: "Bearer " + userToken,
+                  "Content-Type": "multipart/form-data",
+                },
               });
 
               alert(JSON.stringify(response.data));
@@ -190,6 +184,8 @@ const Publish = props => {
         </form>
       </div>
     </section>
+  ) : (
+    <Navigate to="/signup" />
   );
 };
 
