@@ -5,8 +5,12 @@ const Publish = props => {
   const [file, setFile] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [brand, setBrand] = useState("");
+  const [size, setSize] = useState("");
+  const [condition, setCondition] = useState("");
+  const [color, setColor] = useState("");
+  const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
-  const [details, setDetails] = useState([]);
   const userToken = Cookies.get("token");
 
   return (
@@ -17,11 +21,15 @@ const Publish = props => {
             event.preventDefault();
 
             const formData = new FormData();
-            formData.append("Titre", title);
-            formData.append("Description", description);
-            formData.append("Prix", price);
-            formData.append("Détails", details);
-            formData.append("Photos", file);
+            formData.append("title", title);
+            formData.append("descrition", description);
+            formData.append("price", price);
+            formData.append("brand", brand);
+            formData.append("size", size);
+            formData.append("condition", condition);
+            formData.append("color", color);
+            formData.append("city", city);
+            formData.append("picture", file);
 
             //      product_name: req.body.title,
             // product_description: req.body.description,
@@ -59,42 +67,104 @@ const Publish = props => {
             }
           }}
         >
-          <input
-            type="text"
-            onChange={event => {
-              setTitle(event.target.value);
-            }}
-            value={title}
-          />
-          <input
-            type="text"
-            onChange={event => {
-              setDescription(event.target.value);
-            }}
-            value={description}
-          />
-          <input
-            type="text"
-            onChange={event => {
-              setPrice(event.target.value);
-            }}
-            value={price}
-          />
-          <label>MARQUE :</label>
-          <input
-            type="text"
-            onChange={event => {
-              setDetails(event.target.value);
-            }}
-            value={details.push()}
-          />
-          <input
-            type="file"
-            onChange={event => {
-              setFile(event.target.files[0]);
-            }}
-          />
-          <input type="submit" />
+          <div>
+            <label htmlFor="picture">+ Ajoute une photo</label>
+            <input
+              type="file"
+              id="picture"
+              onChange={event => {
+                setFile(event.target.files[0]);
+              }}
+            />
+          </div>
+          <div>
+            <label>Titre</label>
+            <input
+              type="text"
+              placeholder="ex:Chemise Sézanne verte"
+              onChange={event => {
+                setTitle(event.target.value);
+              }}
+              value={title}
+            />
+          </div>
+          <div>
+            <label>Décris ton article</label>
+            <input
+              placeholder="ex:portée quelquesfois, taille correctement"
+              type="text"
+              onChange={event => {
+                setDescription(event.target.value);
+              }}
+              value={description}
+            />
+          </div>
+          <div>
+            <label>Marque :</label>
+            <input
+              type="text"
+              placeholder="ex:Zara"
+              onChange={event => {
+                setBrand(event.target.value);
+              }}
+              value={brand}
+            />
+          </div>
+          <div>
+            <label>Taille :</label>
+            <input
+              type="text"
+              onChange={event => {
+                setSize(event.target.value);
+              }}
+              value={size}
+            />
+          </div>
+          <div>
+            <label>Etat :</label>
+            <input
+              type="text"
+              onChange={event => {
+                setCondition(event.target.value);
+              }}
+              value={condition}
+            />
+          </div>
+          <div>
+            <label>Couleur :</label>
+            <input
+              type="text"
+              onChange={event => {
+                setColor(event.target.value);
+              }}
+              value={color}
+            />
+          </div>
+          <div>
+            <label>Lieu :</label>
+            <input
+              type="text"
+              onChange={event => {
+                setCity(event.target.value);
+              }}
+              value={city}
+            />
+          </div>
+          <div>
+            <label>Prix :</label>
+            <input
+              type="text"
+              onChange={event => {
+                setPrice(event.target.value);
+              }}
+              value={price}
+            />
+          </div>
+          <div>
+            <input type="checkbox" id="exchange" name="exchange" checked />
+            <label>Je suis intéressé.e pour les échanges</label>
+          </div>
+          <button>Ajouter</button>
         </form>
       </div>
     </section>
