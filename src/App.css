@@ -29,6 +29,8 @@ header {
   border-bottom: 1px solid #e6e6e6;
   padding: 10px 20px;
   background-color: #fff;
+  height: 120px;
+  color: #666666;
 }
 
 header .container {
@@ -83,8 +85,7 @@ header img {
 }
 
 .filters input[type="search"] {
-  width: 100%;
-  max-width: 400px;
+  width: 520px;
   padding: 8px 12px;
   border: none;
   border-radius: 6px;
@@ -218,14 +219,155 @@ article {
 ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------ */
 
-.formulaire {
+.formulaire-signup {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 60px 580px 207px 560px;
+  width: 272px;
+  height: 423px;
 }
 
-form > div {
+.formulaire-signup h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.input {
   display: flex;
   flex-direction: column;
+  padding: 10px;
+}
+
+.newsletter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #666666;
+}
+
+form > p {
+  font-size: 10px;
+  color: #999999;
+  margin-bottom: 20px;
+}
+
+form input {
+  border: none;
+  border-bottom: 1px solid #fcced3;
+  height: 35px;
+  margin-bottom: 20px;
+}
+
+input [type="checkbox"] {
+  height: 27px;
+  width: 27px;
+}
+
+.lien-login {
+  color: #017782;
+  text-decoration: none;
+}
+
+.signup-form {
+  background-color: #2cb1ba;
+  height: 45px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------- LOGIN-----------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------ */
+
+.formulaire-login h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.formulaire-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 60px 580px 207px 560px;
+  width: 272px;
+  height: 423px;
+}
+
+.login-form {
+  background-color: #2cb1ba;
+  height: 45px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.lien-signup {
+  color: #017782;
+  text-decoration: none;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------- PUBLISH-----------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------ */
+
+.container-publish {
+  background-color: #eaedee;
+}
+
+.box {
+  background-color: white;
+  width: 1280px;
+}
+
+.formulaire-publish {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 1280px;
+  height: 1030px;
+  gap: 20px;
+}
+
+.publish-form {
+  background-color: #2cb1ba;
+  height: 45px;
+  width: 10%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  cursor: pointer;
 }

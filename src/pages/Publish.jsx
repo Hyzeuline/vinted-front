@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import Cookies from "js-cookie";
+import { Link } from "react-router-dom";
 
 const Publish = props => {
   const [file, setFile] = useState({});
@@ -11,18 +13,61 @@ const Publish = props => {
   const [color, setColor] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
+  const [exchange, setExchange] = useState(false);
   const userToken = Cookies.get("token");
+
+  const handleFile = event => {
+    setFile(event.target.files[0]);
+  };
+
+  const handleTitle = event => {
+    setTitle(event.target.value);
+  };
+
+  const handleDescription = event => {
+    setDescription(event.target.value);
+  };
+
+  const handleBrand = event => {
+    setBrand(event.target.value);
+  };
+
+  const handleSize = event => {
+    setSize(event.target.value);
+  };
+
+  const handleCondition = event => {
+    setCondition(event.target.value);
+  };
+
+  const handleColor = event => {
+    setColor(event.target.value);
+  };
+
+  const handleCity = event => {
+    setCity(event.target.value);
+  };
+
+  const handlePrice = event => {
+    setPrice(event.target.value);
+  };
+
+  const handleExchange = event => {
+    setExchange(event.target.checked);
+  };
 
   return (
     <section>
-      <div className="container">
+      <div className="container-publish">
+        <h1>Vends ton article</h1>
         <form
+          className="formulaire-publish"
           onSubmit={async event => {
             event.preventDefault();
 
             const formData = new FormData();
             formData.append("title", title);
-            formData.append("descrition", description);
+            formData.append("description", description);
             formData.append("price", price);
             formData.append("brand", brand);
             formData.append("size", size);
@@ -50,11 +95,18 @@ const Publish = props => {
                 ? `${import.meta.env.VITE_API_URL}offer/publish`
                 : "https://site--vinted-backend--zvc5szvjvznr.code.run/offer/publish";
 
+              const headers = {
+                "Content-Type": "multipart/form-data",
+              };
+              if (userToken) {
+                headers.Authorization = "Bearer " + userToken;
+              } else {
+                useNavigate("/signup");
+                return;
+              }
+
               const response = await axios.post(url, formData, {
-                headers: {
-                  Authorization: "Bearer " + userToken,
-                  "Content-Type": "multipart/form-data",
-                },
+                headers,
               });
 
               alert(JSON.stringify(response.data));
@@ -67,104 +119,74 @@ const Publish = props => {
             }
           }}
         >
-          <div>
+          <div className="box">
             <label htmlFor="picture">+ Ajoute une photo</label>
-            <input
-              type="file"
-              id="picture"
-              onChange={event => {
-                setFile(event.target.files[0]);
-              }}
-            />
+            <input type="file" id="picture" onChange={handleFile} />
           </div>
-          <div>
-            <label>Titre</label>
-            <input
-              type="text"
-              placeholder="ex:Chemise Sézanne verte"
-              onChange={event => {
-                setTitle(event.target.value);
-              }}
-              value={title}
-            />
+          <div className="box">
+            <div>
+              <label>Titre</label>
+              <input
+                type="text"
+                placeholder="ex:Chemise Sézanne verte"
+                onChange={handleTitle}
+                value={title}
+              />
+            </div>
+            <div>
+              <label>Décris ton article</label>
+              <input
+                placeholder="ex:portée quelquesfois, taille correctement"
+                type="text"
+                onChange={handleDescription}
+                value={description}
+              />
+            </div>
           </div>
-          <div>
-            <label>Décris ton article</label>
-            <input
-              placeholder="ex:portée quelquesfois, taille correctement"
-              type="text"
-              onChange={event => {
-                setDescription(event.target.value);
-              }}
-              value={description}
-            />
+          <div className="box">
+            <div>
+              <label>Marque :</label>
+              <input
+                type="text"
+                placeholder="ex:Zara"
+                onChange={handleBrand}
+                value={brand}
+              />
+            </div>
+            <div>
+              <label>Taille :</label>
+              <input type="text" onChange={handleSize} value={size} />
+            </div>
+            <div>
+              <label>Etat :</label>
+              <input type="text" onChange={handleCondition} value={condition} />
+            </div>
+            <div>
+              <label>Couleur :</label>
+              <input type="text" onChange={handleColor} value={color} />
+            </div>
+            <div>
+              <label>Lieu :</label>
+              <input type="text" onChange={handleCity} value={city} />
+            </div>
           </div>
-          <div>
-            <label>Marque :</label>
-            <input
-              type="text"
-              placeholder="ex:Zara"
-              onChange={event => {
-                setBrand(event.target.value);
-              }}
-              value={brand}
-            />
+          <div className="box">
+            <div>
+              <label>Prix :</label>
+              <input type="text" onChange={handlePrice} value={price} />
+            </div>
+            <div>
+              <input
+                type="checkbox"
+                id="exchange"
+                name="exchange"
+                checked={exchange}
+                onChange={handleExchange}
+              />
+              <label>Je suis intéressé.e pour les échanges</label>
+            </div>
           </div>
-          <div>
-            <label>Taille :</label>
-            <input
-              type="text"
-              onChange={event => {
-                setSize(event.target.value);
-              }}
-              value={size}
-            />
-          </div>
-          <div>
-            <label>Etat :</label>
-            <input
-              type="text"
-              onChange={event => {
-                setCondition(event.target.value);
-              }}
-              value={condition}
-            />
-          </div>
-          <div>
-            <label>Couleur :</label>
-            <input
-              type="text"
-              onChange={event => {
-                setColor(event.target.value);
-              }}
-              value={color}
-            />
-          </div>
-          <div>
-            <label>Lieu :</label>
-            <input
-              type="text"
-              onChange={event => {
-                setCity(event.target.value);
-              }}
-              value={city}
-            />
-          </div>
-          <div>
-            <label>Prix :</label>
-            <input
-              type="text"
-              onChange={event => {
-                setPrice(event.target.value);
-              }}
-              value={price}
-            />
-          </div>
-          <div>
-            <input type="checkbox" id="exchange" name="exchange" checked />
-            <label>Je suis intéressé.e pour les échanges</label>
-          </div>
-          <button>Ajouter</button>
+          <button className="publish-form ">Ajouter</button>
         </form>
       </div>
     </section>

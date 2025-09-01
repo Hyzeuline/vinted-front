@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Login = ({ setLog }) => {
   const [email, setEmail] = useState("");
@@ -37,21 +37,26 @@ const Login = ({ setLog }) => {
     <div className="formulaire-login">
       <form onSubmit={handleSubmit}>
         <h1>Se connecter</h1>
-        <input
-          placeholder="Email"
-          type="text"
-          name="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
-        <input
-          placeholder="Mot de passe"
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
-        <button>Se connecter</button>
+        <div className="input">
+          <input
+            placeholder="Email"
+            type="text"
+            name="email"
+            value={email}
+            onChange={handleEmailChange}
+          />
+          <input
+            placeholder="Mot de passe"
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePasswordChange}
+          />
+        </div>
+        <button className="login-form">Se connecter</button>
+        <Link to="/signup" className="lien-signup">
+          <p>Pas encore de compte ? Inscris-toi !</p>
+        </Link>
       </form>
     </div>
   );

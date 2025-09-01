@@ -42,7 +42,7 @@ function App() {
         <Route path="*" element={<NoMatch />} />
         <Route path="/signup" element={<SignUp log={log} setLog={setLog} />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/offers/publish" element={<Publish />} />
+        <Route path="/offer/publish" element={<Publish />} />
       </Routes>
     </Router>
   );

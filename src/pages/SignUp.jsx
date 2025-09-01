@@ -62,7 +62,7 @@ const SignUp = ({ setLog }) => {
     <div className="formulaire-signup">
       <h1>S'inscrire</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input">
           <input
             placeholder="Nom d'utilisateur"
             type="text"
@@ -85,7 +85,7 @@ const SignUp = ({ setLog }) => {
             onChange={handlePasswordChange}
           />
         </div>
-        <div>
+        <div className="newsletter">
           <input
             type="checkbox"
             id="newsletter"
@@ -100,8 +100,8 @@ const SignUp = ({ setLog }) => {
           Conditions et Politique de Confidentialité de Vinted. Je confirme
           avoir au moins 18 ans.
         </p>
-        <button>S'inscrire</button>
-        <Link to="/login">
+        <button className="signup-form">S'inscrire</button>
+        <Link to="/login" className="lien-login">
           <p>Tu as déjà un compte ? Connecte-toi !</p>
         </Link>
       </form>
