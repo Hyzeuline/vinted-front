@@ -10,12 +10,18 @@ const Offer = () => {
   useEffect(() => {
     // appel à l'API pour récupérer les données via axios
     const fetchData = async () => {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}offers/${id}`
-      );
-      console.log(response.data);
-      setData(response.data);
-      setIsLoading(false);
+      try {
+        let url = import.meta.env.VITE_API_URL
+          ? `${import.meta.env.VITE_API_URL}offers`
+          : "https://site--vinted-backend--zvc5szvjvznr.code.run/offers";
+
+        const response = await axios.get(`${url}/${id}`);
+        console.log(response.data);
+        setData(response.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error.response);
+      }
     };
 
     fetchData();
