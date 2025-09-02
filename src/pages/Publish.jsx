@@ -65,7 +65,6 @@ const Publish = () => {
   return userToken ? (
     <section>
       <div className="container-publish">
-        <h1>Vends ton article</h1>
         <form
           className="formulaire-publish"
           onSubmit={async event => {
@@ -122,79 +121,98 @@ const Publish = () => {
             }
           }}
         >
+          <h1>Vends ton article</h1>
           <div className="box">
-            <label htmlFor="picture">+ Ajoute une photo</label>
+            <label htmlFor="picture" id="picture-label">
+              + Ajouter une photo
+            </label>
+
             <input type="file" id="picture" onChange={handlePicture} />
             {preview && (
               <img src={preview} alt="prévisualisation avant l'upload" /> // faire une adaptation css pour la taille de l'image
             )}
           </div>
           <div className="box">
-            <div>
+            <div className="text-input">
               <label htmlFor="form-title">Titre</label>
               <input
                 type="text"
                 id="form-title"
-                placeholder="ex:Chemise Sézanne verte"
+                placeholder="ex : Chemise Sézanne verte"
                 onChange={handleTitle}
                 value={title}
               />
             </div>
-            <div>
+            <div className="text-input">
               <label htmlFor="description">Décris ton article</label>
               <input
                 type="text"
                 id="description"
-                placeholder="ex:portée quelquesfois, taille correctement"
+                placeholder="ex : portée quelquesfois, taille correctement"
                 onChange={handleDescription}
                 value={description}
               />
             </div>
           </div>
           <div className="box">
-            <div>
+            <div className="text-input">
               <label htmlFor="brand">Marque :</label>
               <input
                 type="text"
                 id="brand"
-                placeholder="ex:Zara"
+                placeholder="ex : Zara"
                 onChange={handleBrand}
                 value={brand}
               />
             </div>
-            <div>
+            <div className="text-input">
               <label htmlFor="size">Taille :</label>
-              <input type="text" id="size" onChange={handleSize} value={size} />
+              <input
+                type="text"
+                id="size"
+                placeholder="ex: L/42"
+                onChange={handleSize}
+                value={size}
+              />
             </div>
-            <div>
+            <div className="text-input">
               <label htmlFor="condition">Etat :</label>
               <input
                 type="text"
                 id="condition"
+                placeholder="ex : Neuf avec étiquette"
                 onChange={handleCondition}
                 value={condition}
               />
             </div>
-            <div>
+            <div className="text-input">
               <label htmlFor="color">Couleur :</label>
               <input
                 type="text"
                 id="color"
+                placeholder="ex : Vert"
                 onChange={handleColor}
                 value={color}
               />
             </div>
-            <div>
+            <div className="text-input">
               <label htmlFor="city">Lieu :</label>
-              <input type="text" id="city" onChange={handleCity} value={city} />
+              <input
+                type="text"
+                id="city"
+                placeholder="ex : Paris"
+                onChange={handleCity}
+                value={city}
+              />
             </div>
           </div>
           <div className="box">
-            <div>
+            <div className="text-input">
               <label htmlFor="price">Prix :</label>
               <input
                 type="text"
                 id="price"
+                placeholder="ex : 30"
                 onChange={handlePrice}
                 value={price}
               />

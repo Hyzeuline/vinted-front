@@ -80,6 +80,7 @@ const Header = ({
         <div className="header-button">
           {token ? (
             <button
+              className="disconnect"
               onClick={() => {
                 Cookies.remove("token");
                 setLog(null);

@@ -25,9 +25,16 @@ const Payment = () => {
     },
   };
   return (
-    <>
-      <span>{title}</span>
-      <span>{amount}€</span>
+    <div className="payment-container">
+      <h2>Résumé de votre commande</h2>
+
+      <p>
+        Total : <span className="payment">{amount}€</span>
+      </p>
+      <p>
+        Il ne vous reste qu'une étape pour vous offrir l'article{" "}
+        <span>{title}</span>
+      </p>
 
       {/* // Le composant Elements doit contenir toute notre logique de paiement //
       On lui donner la preuve que nous sommes connectés et les options de
@@ -35,7 +42,7 @@ const Payment = () => {
       <Elements stripe={stripePromise} options={options}>
         <CheckoutForm title={title} amount={amount} />
       </Elements>
-    </>
+    </div>
   );
 };
 

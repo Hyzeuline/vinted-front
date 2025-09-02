@@ -86,7 +86,11 @@ const CheckoutForm = ({ title, amount }) => {
   ) : (
     <form onSubmit={handleSubmit}>
       <PaymentElement />
-      <button type="submit" disabled={!stripe || !elements || isLoading}>
+      <button
+        className="button-payment"
+        type="submit"
+        disabled={!stripe || !elements || isLoading}
+      >
         Pay
       </button>
       {/* Éventuel message d'erreur */}

@@ -41,7 +41,11 @@ const Offer = () => {
             return (
               <div className="infos" key={index}>
                 <div>{element.MARQUE}</div>
-                {element.TAILLE && <div className="size">{element.TAILLE}</div>}
+                {element.TAILLE && (
+                  <div className="size">
+                    <div>{element.TAILLE}</div>
+                  </div>
+                )}
                 <div>{element.ÉTAT}</div>
                 <div>{element.COULEUR}</div>
                 <div>{element.EMPLACEMENT}</div>
@@ -49,7 +53,7 @@ const Offer = () => {
             );
           })}
         </div>
-        <div>
+        <div className="name-product">
           <div>{data.product_name}</div>
           <div>{data.product_description}</div>
           <div className="owner">

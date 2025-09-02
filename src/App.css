@@ -111,6 +111,16 @@ header img {
   margin-left: 40px;
 }
 
+.disconnect {
+  height: 30px;
+  border-radius: 5px;
+  font-size: 12px;
+  outline: none;
+  border: none;
+  background-color: #c2175b;
+  color: #fff;
+}
+
 /* ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------
@@ -177,7 +187,7 @@ article {
 .photo-article img {
   width: 395px;
   height: 600px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .details-article {
@@ -194,6 +204,10 @@ article {
 }
 
 .details-article .infos {
+  line-height: 30px;
+}
+
+.name-product {
   line-height: 30px;
 }
 
@@ -340,11 +354,23 @@ input [type="checkbox"] {
 
 .container-publish {
   background-color: #eaedee;
+  padding: 30px;
+}
+
+.container-publish > h1 {
+  font-size: 24px;
 }
 
 .box {
+  display: flex;
+  flex-direction: column;
   background-color: white;
   width: 1280px;
+  height: 400px;
+}
+
+.box > div {
+  border-bottom: #999999;
 }
 
 .formulaire-publish {
@@ -372,6 +398,74 @@ input [type="checkbox"] {
   cursor: pointer;
 }
 
+.text-input > input {
+  height: 25px;
+  width: 620px;
+}
+
 .box img {
   height: 200px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.text-input {
+  display: flex;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+#picture-label {
+  color: darkcyan;
+  width: 200px;
+  height: 44px;
+  border: 1px solid darkcyan;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 70px auto;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+}
+/* ------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------- PAYMENT-----------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------ */
+
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  gap: 20px;
+}
+
+.payment-container > h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.payment {
+  font-weight: 700;
+}
+
+.button-payment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00c06d;
+  color: white;
+  border: none;
+  width: 290px;
+  height: 44px;
+  border-radius: 5px;
+  margin-top: 20px;
 }
