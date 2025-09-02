@@ -6,6 +6,7 @@ import Offer from "./pages/Offer";
 import NoMatch from "./pages/NoMatch";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Payment from "./pages/Payment";
 import { useState } from "react";
 import Publish from "./pages/Publish";
 
@@ -39,10 +40,11 @@ function App() {
           }
         />
         <Route path="/offer/:id" element={<Offer />} />
-        <Route path="*" element={<NoMatch />} />
+        <Route path="/payment" element={<Payment />} />
         <Route path="/signup" element={<SignUp log={log} setLog={setLog} />} />
         <Route path="/login" element={<Login setLog={setLog} />} />
         <Route path="/offer/publish" element={<Publish />} />
+        <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>
   );

@@ -12,13 +12,14 @@ const Login = ({ setLog }) => {
     event.preventDefault();
     try {
       const response = await axios.post(
-        " https://site--vinted-backend--zvc5szvjvznr.code.run/user/login",
+        "https://site--vinted-backend--zvc5szvjvznr.code.run/user/login",
         {
           email,
           password,
         }
       );
-      setLog(Cookies.get("token"));
+      Cookies.set("token", response.data.token);
+      setLog(response.data.token);
       navigate("/");
     } catch (error) {
       console.log(error);

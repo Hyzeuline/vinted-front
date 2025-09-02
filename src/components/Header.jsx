@@ -81,7 +81,8 @@ const Header = ({
           {token ? (
             <button
               onClick={() => {
-                setLog(Cookies.remove("token"));
+                Cookies.remove("token");
+                setLog(null);
               }}
             >
               Déconnexion
