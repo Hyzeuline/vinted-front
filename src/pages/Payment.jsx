@@ -33,7 +33,7 @@ const Payment = () => {
       On lui donner la preuve que nous sommes connectés et les options de
       paiement */}
       <Elements stripe={stripePromise} options={options}>
-        <CheckoutForm />
+        <CheckoutForm title={title} amount={amount} />
       </Elements>
     </>
   );

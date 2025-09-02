@@ -6,7 +6,7 @@ import {
 import { useState } from "react";
 import axios from "axios";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ title, amount }) => {
   // Permet de faire une requête à Stripe pour confirmer le paiement
   const stripe = useStripe();
   // Permet de récupérer le contenu des inputs
@@ -43,7 +43,10 @@ const CheckoutForm = () => {
         ? `${import.meta.env.VITE_API_URL}payment`
         : "https://site--vinted-backend--zvc5szvjvznr.code.run/payment";
 
-      const response = await axios.post(url);
+      const response = await axios.post(url, {
+        amount,
+        title,
+      });
       console.log(response.data);
       const clientSecret = response.data.client_secret;
 
