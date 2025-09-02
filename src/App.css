@@ -371,3 +371,7 @@ input [type="checkbox"] {
   margin-bottom: 15px;
   cursor: pointer;
 }
+
+.box img {
+  height: 200px;
+}

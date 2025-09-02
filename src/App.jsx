@@ -41,7 +41,7 @@ function App() {
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="*" element={<NoMatch />} />
         <Route path="/signup" element={<SignUp log={log} setLog={setLog} />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setLog={setLog} />} />
         <Route path="/offer/publish" element={<Publish />} />
       </Routes>
     </Router>

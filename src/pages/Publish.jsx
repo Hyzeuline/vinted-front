@@ -1,10 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const Publish = props => {
-  const [file, setFile] = useState({});
+const Publish = () => {
+  const [picture, setPicture] = useState({});
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
@@ -14,11 +14,16 @@ const Publish = props => {
   const [city, setCity] = useState("");
   const [price, setPrice] = useState("");
   const [exchange, setExchange] = useState(false);
+  const [preview, setPreview] = useState(null);
+
+  const navigate = useNavigate();
 
   const userToken = Cookies.get("token");
 
-  const handleFile = event => {
-    setFile(event.target.files[0]);
+  const handlePicture = event => {
+    setPicture(event.target.files[0]);
+    const objectUrl = URL.createObjectURL(event.target.files[0]);
+    setPreview(objectUrl);
   };
 
   const handleTitle = event => {
@@ -75,7 +80,7 @@ const Publish = props => {
             formData.append("condition", condition);
             formData.append("color", color);
             formData.append("city", city);
-            formData.append("picture", file);
+            formData.append("picture", picture);
 
             //      product_name: req.body.title,
             // product_description: req.body.description,
@@ -90,7 +95,9 @@ const Publish = props => {
             //   { EMPLACEMENT: req.body.city },
             // ],
             // owner: req.user,
-
+            for (var pair of formData.entries()) {
+              console.log(pair[0] + ", " + pair[1]);
+            }
             try {
               let url = import.meta.env.VITE_API_URL
                 ? `${import.meta.env.VITE_API_URL}offer/publish`
@@ -103,7 +110,9 @@ const Publish = props => {
                 },
               });
 
-              alert(JSON.stringify(response.data));
+              console.log(response.data);
+              alert("Votre article a été publié"); //vérifier
+              navigate("/");
             } catch (err) {
               if (err.response.status === 500) {
                 console.error("An error occurred");
@@ -115,23 +124,28 @@ const Publish = props => {
         >
           <div className="box">
             <label htmlFor="picture">+ Ajoute une photo</label>
-            <input type="file" id="picture" onChange={handleFile} />
+            <input type="file" id="picture" onChange={handlePicture} />
+            {preview && (
+              <img src={preview} alt="prévisualisation avant l'upload" /> // faire une adaptation css pour la taille de l'image
+            )}
           </div>
           <div className="box">
             <div>
-              <label>Titre</label>
+              <label htmlFor="form-title">Titre</label>
               <input
                 type="text"
+                id="form-title"
                 placeholder="ex:Chemise Sézanne verte"
                 onChange={handleTitle}
                 value={title}
               />
             </div>
             <div>
-              <label>Décris ton article</label>
+              <label htmlFor="description">Décris ton article</label>
               <input
-                placeholder="ex:portée quelquesfois, taille correctement"
                 type="text"
+                id="description"
+                placeholder="ex:portée quelquesfois, taille correctement"
                 onChange={handleDescription}
                 value={description}
               />
@@ -139,35 +153,51 @@ const Publish = props => {
           </div>
           <div className="box">
             <div>
-              <label>Marque :</label>
+              <label htmlFor="brand">Marque :</label>
               <input
                 type="text"
+                id="brand"
                 placeholder="ex:Zara"
                 onChange={handleBrand}
                 value={brand}
               />
             </div>
             <div>
-              <label>Taille :</label>
-              <input type="text" onChange={handleSize} value={size} />
+              <label htmlFor="size">Taille :</label>
+              <input type="text" id="size" onChange={handleSize} value={size} />
             </div>
             <div>
-              <label>Etat :</label>
-              <input type="text" onChange={handleCondition} value={condition} />
+              <label htmlFor="condition">Etat :</label>
+              <input
+                type="text"
+                id="condition"
+                onChange={handleCondition}
+                value={condition}
+              />
             </div>
             <div>
-              <label>Couleur :</label>
-              <input type="text" onChange={handleColor} value={color} />
+              <label htmlFor="color">Couleur :</label>
+              <input
+                type="text"
+                id="color"
+                onChange={handleColor}
+                value={color}
+              />
             </div>
             <div>
-              <label>Lieu :</label>
-              <input type="text" onChange={handleCity} value={city} />
+              <label htmlFor="city">Lieu :</label>
+              <input type="text" id="city" onChange={handleCity} value={city} />
             </div>
           </div>
           <div className="box">
             <div>
-              <label>Prix :</label>
-              <input type="text" onChange={handlePrice} value={price} />
+              <label htmlFor="price">Prix :</label>
+              <input
+                type="text"
+                id="price"
+                onChange={handlePrice}
+                value={price}
+              />
             </div>
             <div>
               <input
@@ -177,7 +207,9 @@ const Publish = props => {
                 checked={exchange}
                 onChange={handleExchange}
               />
-              <label>Je suis intéressé.e pour les échanges</label>
+              <label htmlFor="exchange">
+                Je suis intéressé.e pour les échanges
+              </label>
             </div>
           </div>
           <button className="publish-form ">Ajouter</button>
