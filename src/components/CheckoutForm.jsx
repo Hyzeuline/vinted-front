@@ -43,7 +43,7 @@ const CheckoutForm = () => {
       : "https://site--vinted-backend--zvc5szvjvznr.code.run/payment";
 
     const response = await axios.post(url);
-
+    console.log(response.data);
     const clientSecret = response.data.client_secret;
 
     // Requête à Stripe pour valider le paiement
@@ -53,7 +53,7 @@ const CheckoutForm = () => {
       clientSecret,
       // Éventuelle redirection
       confirmParams: {
-        return_url: "/",
+        return_url: "http://localhost:5173/",
       },
       // Bloque la redirections
       redirect: "if_required",

@@ -66,7 +66,6 @@ const Offer = () => {
           to="/payment"
           state={{ title: data.product_name, amount: data.product_price }}
         >
-          {/* voir si c'est juste ? */}
           <button>Acheter</button>
         </Link>
       </div>
