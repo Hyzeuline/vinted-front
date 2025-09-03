@@ -1,11 +1,14 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Cookies from "js-cookie";
 
 const Offer = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  let token = Cookies.get("token");
 
   useEffect(() => {
     // appel à l'API pour récupérer les données via axios
@@ -65,13 +68,16 @@ const Offer = () => {
             <div>{data.owner.account.username}</div>
           </div>
         </div>
-
-        <Link
-          to="/payment"
-          state={{ title: data.product_name, amount: data.product_price }}
-        >
-          <button>Acheter</button>
-        </Link>
+        {token ? (
+          <Link
+            to="/payment"
+            state={{ title: data.product_name, amount: data.product_price }}
+          >
+            <button>Acheter</button>
+          </Link>
+        ) : (
+          <Navigate to="/login" />
+        )}
       </div>
     </div>
   );
